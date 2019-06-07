@@ -1,0 +1,351 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf500
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 1. Images:\
+\
+Drop image files or folders containing image files in the main screen. All the files will appear, even the non-image ones. Select \'91Custom\'92 under the 
+\f1\b Filter Images? 
+\f0\b0 .\
+\
+Select \'91All\'92 in the 
+\f1\b Match _ of the following rules
+\f0\b0 .\
+\
+Since the image files consists of thumbnail images as well, they need to be filtered out. Luckily, these files have \'91thumb\'92 or \'91thumbnail\'92 present in their names, and thereby can be easily identified. Select these options in the 
+\f1\b Select the rule criteria
+\f0\b0  option:  \'91Files\'92 \'91Does not\'92 \'91Contain\'92 \'91thumb\'92. \
+\
+System files which are accidentally present can be filtered out in the same way. \
+\
+Click 
+\f1\b Apply filters to the file list
+\f0\b0  to view which image files will be processed.\
+\
+A file name appears like this: \
+U2OS-20X-BpAHDDB-100uM50uM25uM12uM-LIVE_C03_s3_w24995BD36-A511-48A3-AFE3-D6FED32C7383\
+\
+2. Metadata:\
+\
+While this is an optional module, it can be very handy to automate the pipeline workflow in Cell Profiler and later during the analysis in Python/R, since it generates metadata, I.e., data about data, from different sources. \
+In our research group, we practice the convention of having informative filenames of the image files as output from ImageXpress microscope. These file names usually consist of the cell line used in the experiment, the magnification at which microscope is set, the treatments and the treatment\'92s various concentrations used in treating the cells and more description if seems necessary. The microscope\'92s software is by default programmed to add well and site imaged to every filename. Hence, image\'92s name is information-rich, and this module help extract this information.\
+\
+Click \'91Yes\'92 in the option 
+\f1\b Extract Metadata?
+\f0\b0  .\
+In 
+\f1\b Metadata extraction method
+\f0\b0 , select \'91Extract from file/folder names\'92.\
+Choose \'91File name\'92 in the 
+\f1\b Metadata source
+\f0\b0  option.\
+Type in the necessary regular expression which can extract desired information from the filename in the 
+\f1\b Regular expression to extract from file name
+\f0\b0  option. In my case, I used : ^(?P<CellType>\\w*)-(?P<Mag>\\w*)-(?P<Tmt>\\w*)-(?P<Conc>\\w*)-(?P<Live>\\w\{4\})_(?P<Well>\\w*)_(?P<Site>\\w*)_(?P<Channel>\\w\{2\})\
+\
+Select \'91All images\'92 from the 
+\f1\b Extract metadata
+\f0\b0  from option.\
+\
+Click \'91Add another extraction method\'92 button to add another extraction method.\
+\
+In 
+\f1\b Metadata extraction method
+\f0\b0 , select \'91Extract from file/folder names\'92.\
+Choose \'91Folder name\'92 in the 
+\f1\b Metadata source
+\f0\b0  option.\
+Type in the necessary regular expression which can extract desired information from the folder name in the 
+\f1\b Regular expression to extract from folder name
+\f0\b0  option. In my case, I used : /TimePoint_*(?P<TimePoint>\\w*)\
+***********Correct this! \
+\
+Select \'91All images\'92 from the 
+\f1\b Extract metadata
+\f0\b0  from option.\
+\
+Select \'92Text\'92 in the 
+\f1\b Metadata type
+\f0\b0  option.\
+\
+Click 
+\f1\b Update
+\f0\b0  to view the generated metadata as a table in the white space below. \
+\
+3. NamesAndTypes\
+\
+The CellProfiler description for this module reads \'93The NamesAndTypes module allows you to assign a meaningful name to each image by which other modules will refer to it.\'94 \
+\
+With NamesAndTypes module, meaningful names can be assigned to each image by which other modules will refer to it. With the help of this module, different images revealing different data from the same well and site in the experiments which have multiplexed dyes, like Cell Painting experiments, can be grouped together as the same \'91image set\'92 . In simple words, it is like putting together different layers revealing different levels of information about the same object, to generate a single rich profile about that object. \
+\
+Select \'91Image matching rules\'92 in the 
+\f1\b Assign a name to
+\f0\b0  option.\
+Click \'92No\'92 to 
+\f1\b Process as 3D?
+\f0\b0  option. \
+Select \'91All\'92 in the 
+\f1\b Match _ of the following rules
+\f0\b0  .\
+In 
+\f1\b Select the rule criteria
+\f0\b0 , choose these options: \'91Metadata\'92 \'91Does\'92 \'91Have\'92 Channel matching\'92 \'91w1\'92. \
+Write \'91DNA\'92 in the 
+\f1\b Name to assign these images
+\f0\b0  option.\
+Select \'91Grayscale image\'92 in the 
+\f1\b Select the image type
+\f0\b0  option.\
+Select \'91Image metadata\'92 in the 
+\f1\b Set intensity range from
+\f0\b0  option.\
+\
+Select \'91Add another image\'92 button. \
+\
+Select \'91All\'92 in the 
+\f1\b Match _ of the following rules
+\f0\b0  .\
+In 
+\f1\b Select the rule criteria
+\f0\b0 , choose these options: \'91Metadata\'92 \'91Does\'92 \'91Have\'92 Channel matching\'92 \'91w2\'92. \
+Write \'91Mito\'92 in the 
+\f1\b Name to assign these images
+\f0\b0  option.\
+Select \'91Grayscale image\'92 in the 
+\f1\b Select the image type
+\f0\b0  option.\
+Select \'91Image metadata\'92 in the 
+\f1\b Set intensity range from
+\f0\b0  option.\
+\
+In the 
+\f1\b Image set matching method
+\f0\b0 , select Metadata.\
+\
+Select \'91Well\'92 and \'91Well\'92 under both DNA and Mito.\
+Click + and select \'92Site\'92 and \'92Site\'92, click + again and select \'91TimePoint\'92 and \'92TimePoint\'92 under the same headings, in the 
+\f1\b Match metadata
+\f0\b0  section.\
+\
+Click 
+\f1\b Update
+\f0\b0  to view the matched image files, corresponding to their respective well addresses, sites and time points. \
+\
+4. Groups:\
+Click \'91No\'92 in the option 
+\f1\b Do you want to group your images?
+\f0\b0  . This module was not required in our experiment.\
+\
+5. IdentifyPrimaryObject:\
+\
+Select \'91Yes\'92 in the 
+\f1\b Use advanced settings?
+\f0\b0  option.\
+Select \'91DNA\'92 in the 
+\f1\b Select the input image
+\f0\b0  (from NamesAndTypes) option. \
+Type \'91Nucleus\'92 in the 
+\f1\b Name the primary objects to be identified
+\f0\b0  option.\
+Type \'9245\'92 in the Min, and \'9290\'92 for the Max, in 
+\f1\b Typical Diameter of objects, in pixel units
+\f0\b0  option.\
+Select \'91Yes\'92 for 
+\f1\b Discard objects outside the diameter range?
+\f0\b0  option.\
+Select \'91Yes\'92 for 
+\f1\b Discard objects touching the border of the image?
+\f0\b0  option.\
+Select \'91Global\'92 under the 
+\f1\b Threshold strategy
+\f0\b0  option.\
+Select \'91Minimum cross entropy\'92 under the 
+\f1\b Threshold method
+\f0\b0  option.\
+Select \'92None\'92 in the 
+\f1\b Method to draw dividing lines between clumped objects
+\f0\b0  option.\
+ Leave rest of the default settings as they are.\
+\
+6. IdentifySecondaryObject:\
+\
+Select \'91Mito\'92 in the 
+\f1\b Select input image
+\f0\b0  option.\
+Select \'91Nucleus\'92 in the 
+\f1\b Select the input objects
+\f0\b0  option.\
+Type \'91CellBoundary\'92 in the 
+\f1\b Name the objects to be identified
+\f0\b0  option.\
+Select \'91Propagation\'92 in the 
+\f1\b Select the method to identify the secondary objects
+\f0\b0  option. \
+Select \'91Adaptive\'92 in the 
+\f1\b Threshold strategy
+\f0\b0  option.\
+Select \'91Otsu\'92 in the 
+\f1\b Thresholding method
+\f0\b0  option.\
+Choose \'92Two classes\'92 in the 
+\f1\b Two-class or three-class thresholding
+\f0\b0  option. \
+In the option 
+\f1\b Lower and upper bounds on threshold
+\f0\b0  option, type \'910.25\'92 in the first white space. \
+Leave rest of the default settings as they are.\
+\
+7. IdentifyTertiaryObject:\
+\
+Select \'91CellBoundary\'92 in the 
+\f1\b Select the larger identified objects
+\f0\b0  option.\
+Select \'91Nucleus\'92 in the 
+\f1\b Select the smaller identified objects
+\f0\b0  option.\
+Type \'91Cytoplasm\'92 in the 
+\f1\b Name the tertiary objects to be identified
+\f0\b0  option.\
+Select \'91Yes\'92 in the 
+\f1\b Shrink smaller object prior to subtraction?
+\f0\b0  option. \
+\
+8. MeasureImageAreaOccupied:\
+\
+Select \'91Objects\'92 in the 
+\f1\b Measure the area occupied in a binary image, or in objects?
+\f0\b0  option.\
+Select \'91Nucleus\'92 in the 
+\f1\b Select objects to measure
+\f0\b0  option.\
+Click 
+\f1\b Add another area
+\f0\b0  button.\
+\
+Select \'91Objects\'92 in the 
+\f1\b Measure the area occupied in a binary image, or in objects?
+\f0\b0  option.\
+Select \'91CellBoundary\'92 in the 
+\f1\b Select objects to measure
+\f0\b0  option.\
+Click 
+\f1\b Add another area
+\f0\b0  button.\
+\
+Select \'91Objects\'92 in the 
+\f1\b Measure the area occupied in a binary image, or in objects?
+\f0\b0  option.\
+Select \'91Cytoplasm\'92 in the 
+\f1\b Select objects to measure
+\f0\b0  option.\
+\
+9. MeasureObjectSizeShape:\
+\
+Select \'91Nucleus\'92 in the 
+\f1\b Select objects to measure
+\f0\b0  option.\
+Click 
+\f1\b Add another object
+\f0\b0  button.\
+Select \'91Cytoplasm\'92 in the 
+\f1\b Select objects to measure
+\f0\b0  option.\
+\
+Click \'91No\'92 in the 
+\f1\b Calculate the Zernike features?
+\f0\b0  option.\
+\
+10. MeasureObjectIntensity:\
+\
+Select \'91DNA\'92 in the 
+\f1\b Select an image to measure
+\f0\b0  option.\
+Select \'91Nucleus\'92 in the 
+\f1\b Select objects to measure
+\f0\b0  option.\
+\
+11. MeasureObjectIntensity:\
+\
+Select \'91Mito\'92 in the 
+\f1\b Select an image to measure
+\f0\b0  option.\
+Select \'91Cytoplasm\'92 in the 
+\f1\b Select objects to measure
+\f0\b0  option.\
+\
+12. MeasureObjectIntensityDistribution:\
+\
+Select \'91None\'92 in the 
+\f1\b Calculate intensity Zernikes?
+\f0\b0  option.\
+Select \'91DNA\'92 in the 
+\f1\b Select an image to measure
+\f0\b0  option. \
+Select \'91Nucleus\'92 in the 
+\f1\b Select objects to measure
+\f0\b0  option.\
+Select \'91These objects\'92 in the 
+\f1\b Object to use as center?
+\f0\b0  option.\
+Click \'91Yes\'92 in the 
+\f1\b Scale the bins?
+\f0\b0  option.\
+Type \'913\'92 in the 
+\f1\b Number of bins
+\f0\b0  option. \
+\
+13. MeasureObjectIntensityDistribution:\
+\
+Select \'91None\'92 in the 
+\f1\b Calculate intensity Zernikes?
+\f0\b0  option.\
+Select \'91Mito\'92 in the 
+\f1\b Select an image to measure
+\f0\b0  option. \
+Select \'91Cytoplasm\'92 in the 
+\f1\b Select objects to measure
+\f0\b0  option.\
+Select \'91Edges of other objects\'92 in the 
+\f1\b Object to use as center?
+\f0\b0  option.\
+Select \'91Nucleus\'92 in the 
+\f1\b Select objects to use as centers
+\f0\b0  option.\
+Click \'91Yes\'92 in the 
+\f1\b Scale the bins?
+\f0\b0  option.\
+Type \'914\'92 in the 
+\f1\b Number of bins
+\f0\b0  option. \
+\
+14. ExportToSpreadsheet:\
+\
+Select \'91Comma (\'93,\'94)\'92 in the 
+\f1\b Select the column delimiter
+\f0\b0  option.\
+Enter desired output folder in the 
+\f1\b Output file location
+\f0\b0  option.\
+Click \'91Yes\'92 in the 
+\f1\b Add image metadata columns to your object data file?
+\f0\b0  option.\
+Click \'91Yes\'92 in the 
+\f1\b Select the measurements to export
+\f0\b0  option.\
+Click \
+\
+-Click All\
+-Unselect CellBoundary\
+-Under Cytoplasm -> AreaShape -> Center, unselect Z\
+-Under Cytoplasm -> Location -> CenterMassIntensity, unselect Z\
+-Under Cytoplasm -> Location -> MaxIntensity, unselect Z\
+-Under Cytoplasm -> Location, unselect Parent\
+-Under Nucleus -> unselect Children\
+-Under Nucleus -> unselect Number\
+-Under Nucleus -> Location-> Center, unselect Z\
+-Under Nucleus -> Location-> CenterMassIntensity, unselect Z\
+-Under Nucleus -> Location -> MaxIntensity, unselect Z\
+ }
